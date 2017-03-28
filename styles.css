@@ -41,5 +41,5 @@ body, a:link, a:visited, a:active{
 .lineUp {
   left: 0px !important;
   transition-property: left;
-  transition-duration: 10s;
+  transition-duration: 1s;
 }

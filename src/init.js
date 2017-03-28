@@ -16,5 +16,12 @@ $(document).ready(function() {
 
   $('.lineUpButton').on('click', function(event) {
     $('.dancer').toggleClass('lineUp');
+    alert('clicked');
   });
+
+  $('body').on('mouseover', '.tiny', function(event) {
+    $(this).css('background-image', 'url(img/pizzaCat.gif)');
+    // alert('hovered');
+  });
+
 });
