@@ -28,3 +28,9 @@ body, a:link, a:visited, a:active{
 .green{
   border:10px solid green;
 }
+.tiny {
+  border: none;
+  width: 180px;
+  height: 200px;
+  background-image: url(img/tiny.jpg);
+}
