@@ -18,8 +18,12 @@ $(document).ready(function() {
     $('.dancer').toggleClass('lineUp');
   });
 
-  $('body').on('mouseover', '.tiny', function(event) {
+  $('body').on('mouseenter', '.tiny', function(event) {
     $(this).css('background-image', 'url(img/pizzaCat.gif)');
+  });
+
+  $('body').on('mouseleave', '.tiny', function(event) {
+    $(this).css('background-image', 'url(img/tiny.jpg)');
   });
 
 });
