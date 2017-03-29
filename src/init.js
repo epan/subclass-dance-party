@@ -7,11 +7,14 @@ $(document).ready(function() {
 
     // make a dancer with a random position
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $('body').height() * Math.random(),
+      $('body').width() * Math.random(),
       Math.random() * 1000
     );
-    $('body').append(dancer.$node);
+    var newDancer = dancer.$node;
+    window.dancers.push(newDancer);
+    $('body').append(window.dancers[window.dancers.length - 1]);
+
   });
 
   $('.lineUpButton').on('click', function(event) {
@@ -26,4 +29,30 @@ $(document).ready(function() {
     $(this).css('background-image', 'url(img/tiny.jpg)');
   });
 
+  var withinRange = function(epicenter, dancer) {
+    var range = 360;
+    var epX = epicenter.position().left;
+    var epY = epicenter.position().top;
+    var targetX = dancer.position().left;
+    var targetY = dancer.position().top;
+    var x = Math.abs(targetX - epX);
+    var y = Math.abs(targetY - epY);
+    var dist = Math.sqrt(x * x + y * y);
+    if (dist <= range) {
+      return true;
+    }
+    return false;
+  };
+
+  $('body').on('click', '.dancer', function(event) {
+    //itterate through dancers array
+    var epicenter = $(this);
+    window.dancers.forEach(function(dancer) {
+      if (withinRange(epicenter, dancer)) {
+        if (epicenter.position().top !== dancer.position().top) {
+          dancer.css('background-image', 'url(img/pizza.png)');
+        }
+      }
+    });
+  });
 });
